@@ -16,19 +16,21 @@ If you have a question or you're stucked with something, feel free to ask our me
 
 ## Part 1
 
-### Demo
-
-#### Connect Product collection to CMS
-
 ### Tasks
 
-start from branch: `31-product`
+start from branch: `41-cart`
 
-#### Integrate Product data from markdown files
+#### Dispatch actions
 
-1. Check the products format in `src/content/products`
-2. Open [GraphiQL](http://localhost:8000/__graphiql) and explore the available fields
-3. Construct a query which fetch `Product`s list (_hint: you only need to filter to `product-page` template key_)
-4. Write and export the page query (_hint: you can check `posts.js`_)
-5. Integrate the data and remove the dummy ones
-6. Repeat from **3.** for the `Product`'s detail page
+1. Check action types `src/store/types`
+2. find all alert() in the project and dispatch actions instead
+
+Here is an example for the INCREMENT_QUANTITY action payload
+
+```js
+payload: {
+    slug: '',
+    name: '',
+    price: 0,
+}
+```
