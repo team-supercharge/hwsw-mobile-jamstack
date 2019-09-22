@@ -36,7 +36,9 @@ export default PostsPage
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(
+      filter: { frontmatter: { templateKey: { eq: "post-page" } } }
+    ) {
       edges {
         node {
           excerpt(pruneLength: 300)
