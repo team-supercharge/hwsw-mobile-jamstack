@@ -73,7 +73,11 @@ function Header() {
           </div>
           <button
             className="relative w-8 m-1 md:ml-4"
-            onClick={() => alert('Toogle clicked')}
+            onClick={() =>
+              dispatch({
+                type: types.TOGGLE_CART,
+              })
+            }
           >
             <svg viewBox="0 0 30 30">
               <circle cx="22" cy="25" r="2" fill="currentColor" />
