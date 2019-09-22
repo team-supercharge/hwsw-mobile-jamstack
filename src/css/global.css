@@ -131,3 +131,28 @@
 .btn-red:hover {
   @apply bg-red-800;
 }
+
+.page-container {
+  transition: transform 0.25s;
+}
+
+.page-container-cart-open {
+  transform: translateX(-320px);
+  filter: blur(1px);
+  transition: all 0.25s;
+}
+
+.cart-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 320px;
+  transform: translateX(100%);
+  transition: transform 0.25s;
+  padding: 1rem;
+}
+
+.cart-container-open {
+  transform: translateX(0);
+}

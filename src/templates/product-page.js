@@ -1,11 +1,14 @@
 import { Link, graphql } from 'gatsby'
 import React from 'react'
+import { useStore } from '../store/store-context'
+import { types } from '../store/types'
 
 export default function ProductPage({
   data: {
     markdownRemark: { frontmatter, html, fields },
   },
 }) {
+  const [, dispatch] = useStore()
   return (
     <div className="flex flex-col md:flex-row md:-mx-8">
       <img
@@ -23,7 +26,7 @@ export default function ProductPage({
         </span>
         <button
           className="btn btn-red mt-4"
-          onClick={() => alert('Added to cart!')}
+          onClick={() => alert('Increment clicked')}
         >
           Add to cart
         </button>
