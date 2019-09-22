@@ -1,8 +1,18 @@
 import { Link } from 'gatsby'
 import React, { useState } from 'react'
+import { useStore } from '../store/store-context'
+import { types } from '../store/types'
 
 function Header() {
   const [isExpanded, toggleExpansion] = useState(false)
+  const [{ cart }, dispatch] = useStore()
+
+  const numberOfProducts = Object.values(cart.products).reduce(
+    (quantity, product) => {
+      return quantity + product.quantity
+    },
+    0,
+  )
   return (
     <nav className="bg-black text-white">
       <div className="flex flex-wrap container justify-between mx-auto p-4 md:p-8 ">
@@ -61,6 +71,30 @@ function Header() {
               blog
             </Link>
           </div>
+          <button
+            className="relative w-8 m-1 md:ml-4"
+            onClick={() => alert('Toogle clicked')}
+          >
+            <svg viewBox="0 0 30 30">
+              <circle cx="22" cy="25" r="2" fill="currentColor" />
+              <circle cx="12" cy="25" r="2" fill="currentColor" />
+              <path d="M24 20H10.5L7 9h20z" fill="currentColor" />
+              <path
+                d="M2 3h1.878a1.5 1.5 0 0 1 1.439 1.077l4.261 14.488A2 2 0 0 0 11.496 20h10.976c.902 0 1.692-.604 1.93-1.474L27 9H7"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeMiterlimit="10"
+              />
+            </svg>
+            {numberOfProducts !== 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white w-6 h-6 rounded-full">
+                {numberOfProducts}
+              </span>
+            )}
+          </button>
         </div>
       </div>
     </nav>
