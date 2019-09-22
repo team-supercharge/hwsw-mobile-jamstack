@@ -16,40 +16,19 @@ If you have a question or you're stucked with something, feel free to ask our me
 
 ## Part 1
 
-start from branch: `master`
+### Demo
 
-### Initial setup and deployment
-
-- base project with predefined styles
-- 2 pages (index, and posts) and blog post template
-- 1 blog post content
+#### Connect Product collection to CMS
 
 ### Tasks
 
-#### Deploy site with Netlify
+start from branch: `31-product`
 
-1. Fork repository https://github.com/team-supercharge/jsconfbp-jamstack on GitHub
-2. Install dependencies
-3. Start project with `npm run develop` / `yarn develop`
-4. Extend `Post` content with Author
-5. Sign in Netlify (with your GitHub account)
-6. Deploy new site from GitHub
-7. Wait until deployment succeeds..
+#### Integrate Product data from markdown files
 
-## Part 2
-
-start from branch: `12-netlify-cms`
-
-### Tasks
-
-#### Integrate Netlify CMS
-
-1. Enable Netlify Identity on Netlify
-2. Invite user (yourself)
-3. Enable git gateway on Netlify `Settings / Identity / Enable Git Gateway`
-
-#### Extend Blog Post with Author
-
-1. Extend config.yml
-2. Create second post in Netlify CMS
-3. Create a post via code
+1. Check the products format in `src/content/products`
+2. Open [GraphiQL](http://localhost:8000/__graphiql) and explore the available fields
+3. Construct a query which fetch `Product`s list (_hint: you only need to filter to `product-page` template key_)
+4. Write and export the page query (_hint: you can check `posts.js`_)
+5. Integrate the data and remove the dummy ones
+6. Repeat from **3.** for the `Product`'s detail page
