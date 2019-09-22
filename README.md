@@ -34,3 +34,11 @@ payload: {
     price: 0,
 }
 ```
+
+Here is an example for the DECREASE_QUANTITY action payload
+
+```js
+payload: {
+  slug: ''
+}
+```
