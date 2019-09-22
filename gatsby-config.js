@@ -28,5 +28,6 @@ module.exports = {
         whitelist: ['a', 'pre'],
       },
     },
+    'gatsby-plugin-netlify-cms',
   ],
 }
