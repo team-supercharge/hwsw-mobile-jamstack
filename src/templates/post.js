@@ -2,17 +2,19 @@ import React from "react"
 import { graphql } from "gatsby"
 
 export default function Template({ data }) {
-  const { markdownRemark } = data // data.markdownRemark holds your post data
+  const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark
   return (
-    <div className="blog-post">
-      <h1>{frontmatter.title}</h1>
-      <h2>{frontmatter.date}</h2>
-      <div
-        className="blog-post-content"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
-    </div>
+    <article>
+        <header>
+          <h1 className="font-bold text-3xl mb-2">{frontmatter.title}</h1>
+          <p className="block mb-5">{frontmatter.date}</p>
+        </header>
+        <section
+          className="markdown"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      </article>
   )
 }
 
