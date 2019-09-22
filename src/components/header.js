@@ -1,6 +1,5 @@
 import { Link } from 'gatsby'
-import React, {useState} from 'react'
-
+import React, { useState } from 'react'
 
 function Header() {
   const [isExpanded, toggleExpansion] = useState(false)
@@ -61,10 +60,7 @@ function Header() {
             >
               blog
             </Link>
-            
           </div>
-
-        
         </div>
       </div>
     </nav>
