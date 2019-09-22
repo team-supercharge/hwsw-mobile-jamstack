@@ -2,3 +2,5 @@ node_modules
 .cache/
 # Build directory
 public/
+# Local Netlify folder
+.netlify
