@@ -21,3 +21,26 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'product'
+    identifier_field: name
+    label: 'Product'
+    folder: 'src/content/products'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'product-page',
+        }
+      - { label: 'Name', name: 'name', widget: 'string' }
+      - { label: 'Image', name: 'image', widget: image }
+      - {
+          label: 'Price',
+          name: 'price',
+          widget: 'number',
+          valueType: 'float',
+          min: 0,
+        }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
