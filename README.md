@@ -29,6 +29,11 @@ If you have a question or you're stucked with something, feel free to ask our me
   2.  Login netlify (with your GitHub account)
   3.  Deploy new site from GitHub
   4.  Wait until deployment succeeds..
+
+## Part 2
+
+### Tasks
+
 - Integrate Netlify CMS
   1. Enable Netlify Identity on Netlify
   2. Invite user (yourself)
