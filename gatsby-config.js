@@ -13,5 +13,20 @@ module.exports = {
         path: `${__dirname}/src/content`,
       },
     },
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/layout`),
+      },
+    },
+    `gatsby-plugin-postcss`,
+    {
+      resolve: 'gatsby-plugin-purgecss',
+      options: {
+        tailwind: true,
+        purgeOnly: ['src/css/style.css', 'src/css/global.css'],
+        whitelist: ['a', 'pre'],
+      },
+    },
   ],
 }
