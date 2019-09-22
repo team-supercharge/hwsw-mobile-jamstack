@@ -2,6 +2,7 @@ import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
 import { useStore } from '../store/store-context'
+import { types } from '../store/types'
 
 export default function ProductPage({
   data: {
@@ -25,7 +26,16 @@ export default function ProductPage({
         </span>
         <button
           className="btn btn-red mt-4"
-          onClick={() => alert('Increment clicked')}
+          onClick={() =>
+            dispatch({
+              type: types.INCREMENT_QUANTITY,
+              payload: {
+                slug: fields.slug,
+                name: frontmatter.name,
+                price: frontmatter.price,
+              },
+            })
+          }
         >
           Add to cart
         </button>

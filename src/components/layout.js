@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from './header'
 import { StateProvider } from '../store/store-context'
 import PageContent from './page-content'
 import Cart from './cart'
