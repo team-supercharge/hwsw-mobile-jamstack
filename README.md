@@ -26,11 +26,12 @@ start from branch: `master`
 
 ### Tasks
 
-- Deploy site with Netlify
-  1. Fork repository https://github.com/team-supercharge/jsconfbp-jamstack on GitHub
-  2. Install dependencies
-  3. Start project with `npm run develop` / `yarn develop`
-  4. Extend Post content with Author
-  5. Login netlify (with your GitHub account)
-  6. Deploy new site from GitHub
-  7. Wait until deployment succeeds..
+#### Deploy site with Netlify
+
+1. Fork repository https://github.com/team-supercharge/jsconfbp-jamstack on GitHub
+2. Install dependencies
+3. Start project with `npm run develop` / `yarn develop`
+4. Extend `Post` content with Author
+5. Sign in Netlify (with your GitHub account)
+6. Deploy new site from GitHub
+7. Wait until deployment succeeds..
