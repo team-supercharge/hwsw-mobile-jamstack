@@ -1,7 +1,7 @@
 ---
+templateKey: post-page
 title: Gatsby And The JAMstack - A Bright Future For The Web
 date: 2019-09-22T14:59:25.544Z
-path: /gatsby-and-the-jamstack-a-bright-future-for-the-web
 ---
 
 [Cross post from the official Gatsby blog.](https://www.gatsbyjs.org/blog/2018-02-16-bright-future-for-the-web/)

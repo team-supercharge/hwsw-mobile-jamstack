@@ -5,12 +5,12 @@ const PostsPage = ({ data }) => {
   const posts = data.allMarkdownRemark.edges
   return posts.map(({ node }) => {
     return (
-      <article className="mb-8" key={node.frontmatter.path}>
+      <article className="mb-8" key={node.fields.slug}>
         <header>
           <h3 className="font-bold text-3xl mb-1">
             <Link
               className="text-red-600 shadow-none no-underline"
-              to={node.frontmatter.path}
+              to={node.fields.slug}
             >
               {node.frontmatter.title}
             </Link>
@@ -39,9 +39,11 @@ export const pageQuery = graphql`
     allMarkdownRemark {
       edges {
         node {
-          excerpt
+          excerpt(pruneLength: 300)
+          fields {
+            slug
+          }
           frontmatter {
-            path
             title
             date(formatString: "MMMM DD, YYYY")
           }
