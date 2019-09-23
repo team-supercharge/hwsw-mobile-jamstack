@@ -1,14 +1,12 @@
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
-import { useStore } from '../store/store-context'
 
 export default function ProductPage({
   data: {
     markdownRemark: { frontmatter, html, fields },
   },
 }) {
-  const [, dispatch] = useStore()
   return (
     <div className="flex flex-col md:flex-row md:-mx-8">
       <Img

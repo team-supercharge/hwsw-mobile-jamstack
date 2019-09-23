@@ -1,13 +1,16 @@
 import { Link } from 'gatsby'
-import React, { useState } from 'react'
-import { useStore } from '../store/store-context'
-import { types } from '../store/types'
+import React, { useState, useContext } from 'react'
+import { StateContext } from './layout'
 
 function Header() {
   const [isExpanded, toggleExpansion] = useState(false)
-  const [{ cart }, dispatch] = useStore()
+  const [, dispatch] = useContext(StateContext)
 
-  const numberOfProducts = Object.values(cart.products).reduce(
+  const products = [
+    { slug: 'product-1', price: 999, name: 'Product 1', quantity: 1 },
+  ]
+
+  const numberOfProducts = Object.values(products).reduce(
     (quantity, product) => {
       return quantity + product.quantity
     },
@@ -73,7 +76,7 @@ function Header() {
           </div>
           <button
             className="relative w-8 m-1 md:ml-4"
-            onClick={() => alert('Toogle clicked')}
+            onClick={() => dispatch({ type: 'TOGGLE_CART' })}
           >
             <svg viewBox="0 0 30 30">
               <circle cx="22" cy="25" r="2" fill="currentColor" />

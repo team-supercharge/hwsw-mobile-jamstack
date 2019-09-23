@@ -1,35 +1,25 @@
-import React from 'react'
-import Header from './header'
-import { StateProvider } from '../store/store-context'
+import React, { useReducer, createContext } from 'react'
 import PageContent from './page-content'
 import Cart from './cart'
-import {
-  reducer as cartReducer,
-  initialState as cartInitialState,
-} from '../store/reducers/cart'
-import {
-  reducer as layoutReducer,
-  initialState as layoutInitialState,
-} from '../store/reducers/layout'
+
+export const StateContext = createContext()
 
 function Layout({ children }) {
-  const mainReducer = ({ cart, layout, orders }, action) => {
-    return {
-      cart: cartReducer(cart, action),
-      layout: layoutReducer(layout, action),
+  const initialState = { isCartOpen: false }
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'TOGGLE_CART':
+        return { isCartOpen: !state.isCartOpen }
+      default:
+        return state
     }
   }
 
-  const initialState = {
-    cart: cartInitialState,
-    layout: layoutInitialState,
-  }
-
   return (
-    <StateProvider initialState={initialState} reducer={mainReducer}>
+    <StateContext.Provider value={useReducer(reducer, initialState)}>
       <PageContent>{children}</PageContent>
       <Cart />
-    </StateProvider>
+    </StateContext.Provider>
   )
 }
 
