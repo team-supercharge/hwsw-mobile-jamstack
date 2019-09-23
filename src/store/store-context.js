@@ -4,8 +4,13 @@ import PropTypes from 'prop-types'
 export const StateContext = createContext()
 
 export const StateProvider = ({ reducer, initialState, children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  // Attach middleware to capture every dispatch
+  const enhancedDispatch = applyMiddleware(dispatch)
+
   return (
-    <StateContext.Provider value={useReducer(reducer, initialState)}>
+    <StateContext.Provider value={[state, enhancedDispatch]}>
       {children}
     </StateContext.Provider>
   )

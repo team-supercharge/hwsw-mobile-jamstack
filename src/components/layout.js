@@ -10,18 +10,24 @@ import {
   reducer as layoutReducer,
   initialState as layoutInitialState,
 } from '../store/reducers/layout'
+import {
+  reducer as ordersReducer,
+  initialState as ordersInitialState,
+} from '../store/reducers/orders'
 
 function Layout({ children }) {
   const mainReducer = ({ cart, layout, orders }, action) => {
     return {
       cart: cartReducer(cart, action),
       layout: layoutReducer(layout, action),
+      orders: ordersReducer(orders, action),
     }
   }
 
   const initialState = {
     cart: cartInitialState,
     layout: layoutInitialState,
+    orders: ordersInitialState,
   }
 
   return (
