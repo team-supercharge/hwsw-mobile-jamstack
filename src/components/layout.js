@@ -14,6 +14,12 @@ import {
   reducer as ordersReducer,
   initialState as ordersInitialState,
 } from '../store/reducers/orders'
+import netlifyIdentity from 'netlify-identity-widget'
+
+if (typeof window !== 'undefined') {
+  netlifyIdentity.init()
+  window.netlifyIdentity = netlifyIdentity
+}
 
 function Layout({ children }) {
   const mainReducer = ({ cart, layout, orders }, action) => {
