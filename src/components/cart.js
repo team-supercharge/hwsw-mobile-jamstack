@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { useStore } from '../store/store-context'
 import { types } from '../store/types'
+import netlifyIdentity from 'netlify-identity-widget'
 
 function Cart() {
   const [{ layout, cart }, dispatch] = useStore()
+
+  const [user, setUser] = useState()
+
+  useEffect(() => {
+    netlifyIdentity.on('login', user => setUser(user))
+    netlifyIdentity.on('logout', () => setUser(null))
+
+    const user = netlifyIdentity.currentUser()
+    setUser(user)
+  }, [])
 
   const products = Object.values(cart.products)
 
@@ -74,6 +85,34 @@ function Cart() {
           </div>
         </div>
       ))}
+      {user && products.length !== 0 && (
+        <button
+          className="btn btn-red w-full mt-8"
+          onClick={() =>
+            dispatch({
+              type: types.CHECKOUT,
+              payload: cart.products,
+            })
+          }
+        >
+          Checkout
+        </button>
+      )}
+      {!user ? (
+        <button
+          className="btn btn-red w-full mt-8"
+          onClick={() => netlifyIdentity.open()}
+        >
+          Login
+        </button>
+      ) : (
+        <button
+          className="btn btn-red w-full mt-8"
+          onClick={() => netlifyIdentity.logout()}
+        >
+          Logout
+        </button>
+      )}
     </div>
   )
 }

@@ -7,17 +7,9 @@ export const initialState = {
 export const reducer = (state, action) => {
   switch (action.type) {
     case types.LOAD_ORDER_HISTORY_SUCCESS:
-      return {
-        ...state,
-        history: action.payload,
-      }
-    case types.CHECKOUT_SUCCESS: {
-      return {
-        ...state,
-        history: [...state.history, action.payload],
-      }
-    }
-
+      return state
+    case types.CHECKOUT_SUCCESS:
+      return state
     default:
       return state
   }

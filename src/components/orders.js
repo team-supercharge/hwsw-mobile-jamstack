@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import netlifyIdentity from 'netlify-identity-widget'
 import { navigate } from 'gatsby'
-import { useStore } from '../store/StoreContext'
+import { useStore } from '../store/store-context'
 import { types } from '../store/types'
 
 function Orders() {
