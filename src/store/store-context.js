@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import PropTypes from 'prop-types'
+import { applyMiddleware } from './middleware'
 
 export const StateContext = createContext()
 
