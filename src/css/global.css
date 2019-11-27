@@ -100,6 +100,26 @@
   @apply bg-gray-100 !important;
 }
 
+/**
+ * Product list
+ */
+.product-list {
+  display: grid;
+  grid-gap: theme('spacing.16');
+}
+
+@screen sm {
+  .product-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@screen lg {
+  .product-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
 .btn {
   @apply font-bold py-2 px-4 rounded;
 }
@@ -110,4 +130,29 @@
 
 .btn-red:hover {
   @apply bg-red-800;
+}
+
+.page-container {
+  transition: transform 0.25s;
+}
+
+.page-container-cart-open {
+  transform: translateX(-320px);
+  filter: blur(1px);
+  transition: all 0.25s;
+}
+
+.cart-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 320px;
+  transform: translateX(100%);
+  transition: transform 0.25s;
+  padding: 1rem;
+}
+
+.cart-container-open {
+  transform: translateX(0);
 }
