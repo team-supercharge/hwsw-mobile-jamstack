@@ -1,63 +1,33 @@
-import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { Link } from 'gatsby'
 import React from 'react'
 
-const IndexPage = ({ data }) => (
+const products = [
+  { slug: 'product-name-1', price: 879.99, name: 'Product Name 1' },
+  { slug: 'product-name-2', price: 79.99, name: 'Product Name 2' },
+]
+
+const IndexPage = () => (
   <div className="product-list">
-    {data.allMarkdownRemark.edges.map(
-      ({
-        node: {
-          fields: { slug },
-          frontmatter: { name, image, price },
-        },
-      }) => (
-        <Link
-          key={slug}
-          className="block rounded-lg overflow-hidden shadow-lg hover:shadow-xl"
-          to={slug}
-        >
-          <div className="relative pb-full">
-            <Img
-              fluid={image.childImageSharp.fluid}
-              alt={name}
-              style={{ position: 'absolute', width: '100%', height: '100%' }}
-            />
-          </div>
-          <div className="bg-white p-4">
-            <div className="font-bold text-2xl text-gray-900">{name}</div>
-            <div className="font-semibold text-l text-gray-700">€{price}</div>
-          </div>
-        </Link>
-      ),
-    )}
+    {products.map(({ slug, name, price }) => (
+      <Link
+        key={slug}
+        className="block rounded-lg overflow-hidden shadow-lg hover:shadow-xl"
+        to={slug}
+      >
+        <div className="relative pb-full">
+          <img
+            src="https://source.unsplash.com/random/800x600"
+            alt={name}
+            className="absolute h-full w-full object-cover"
+          />
+        </div>
+        <div className="bg-white p-4">
+          <div className="font-bold text-2xl text-gray-900">{name}</div>
+          <div className="font-semibold text-l text-gray-700">€{price}</div>
+        </div>
+      </Link>
+    ))}
   </div>
 )
-
-export const query = graphql`
-  query {
-    allMarkdownRemark(
-      filter: { frontmatter: { templateKey: { eq: "product-page" } } }
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 610, quality: 80, fit: COVER) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            price
-            name
-          }
-        }
-      }
-    }
-  }
-`
 
 export default IndexPage
